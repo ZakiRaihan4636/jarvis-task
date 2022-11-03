@@ -26,4 +26,37 @@ class BooksController extends Controller
             'data' => $buku,
         ]);
     }
+
+    public function store(Request $request)
+    {
+
+        $input = [
+            'title' => $request->title,
+            'author' => $request->author,
+            'publisher' => $request->publisher,
+            'rating' => $request->rating,
+            'published_date' => $request->published_date
+        ];
+
+        $buku = Books::create($input);
+
+        $data = [
+            "massage" => "Create is sucsessfully",
+            "data" => $buku,
+        ];
+
+        return response()->json($data, 201);
+    }
+
+    public function show($id)
+    {
+        $buku = Books::find($id);
+
+        $data = [
+            "massage" => "Show resources by id $id",
+            "data" => $buku
+        ];
+
+        return response()->json($data, 200);
+    }
 }

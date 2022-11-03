@@ -25,4 +25,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/pustakawan', [PustakawanController::class, 'index']);
 
+Route::post('/pustakawan', [PustakawanController::class, 'store']);
+
+Route::get('/pustakawan/{id}', [PustakawanController::class, 'show']);
+
+
 Route::get('/books', [BooksController::class, 'index']);
+
+Route::post('/books', [BooksController::class, 'store']);
+
+Route::get('/books/{id}', [BooksController::class, 'show']);
